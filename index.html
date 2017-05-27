@@ -21,11 +21,15 @@
 }
 </style>
 </head>
-<body>
-  <div id="inside">
+<body id="test">
+  <div class="navi">
     <button onclick="newAce()">New File</button>
+    <button onclick="runAce()">Run all</button>
+    <button onclick="hideAllAce()">Hide</button>
+    <button onclick="clearAllAce()">Clear all</button>
+    <button onclick="deleteAllAce()">Delete all</button>
   </div>
-
+  <div id="inside"><div>
 <script src="./src/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     let newAce = () => {
@@ -36,10 +40,11 @@
       aceTag.style.width = '640px';
       aceTag.style.height = '480px';
       let node = document.createTextNode(`
-        function helloWorld() {
-          let h = 'hello world';
-          return h;
-        }
+        // function helloWorld() {
+        //   let h = 'hello world';
+        //   return h;
+        //}
+        console.log('hello');
         `);
       aceTag.appendChild(node);
       let element = document.getElementById('inside')
@@ -50,6 +55,50 @@
       a.setTheme("ace/theme/monokai");
       a.getSession().setMode("ace/mode/javascript");
 
+    }
+    let runAce = () => {
+      let editor = getAllAce();
+      for (edit of editor) {
+        let a = ace.edit(edit);
+        let script = document.createElement('script');
+        let node = document.createTextNode(a.getValue());
+        script.appendChild(node);
+        console.log(script);
+        document.body.appendChild(script);
+      }
+
+    }
+    let currentAce = () => {
+
+    }
+    let getAllAce = () => {
+      let editor = [];
+      let aceElement = document.getElementsByTagName("ace-element");
+      for (a of aceElement) {
+        let split = a.id.substr(0, 6);
+        if (split === 'editor') {
+            editor.push(a.id);
+        }
+      }
+      return  editor;
+    }
+
+    let hideAllAce = () => {
+
+    }
+    let clearAllAce = () => {
+      let editor = getAllAce();
+      for (ed of editor) {
+        let a = ace.edit(ed);
+        a.setValue('');
+      }
+    }
+    let deleteAllAce = () => {
+      let editor = getAllAce();
+      for (ed of editor) {
+        let a = ace.edit(ed).destroy;
+      }
+      
     }
 </script>
 </body>
