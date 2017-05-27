@@ -1,0 +1,20 @@
+{
+  "name": "purr",
+  "version": "0.0.1",
+  "description": "web engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "AndrewVanardennen",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewVanardennen/Purr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AndrewVanardennen/Purr/issues"
+  },
+  "homepage": "https://github.com/AndrewVanardennen/Purr#readme"
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Purr - the web engine</title>
+<style>
+#inside {
+  position: fixed;
+  width: 380px;
+  height: 600px;
+}
+#editor {
+    position: fixed;
+    width: 300px;
+    height: 200px;
+}
+</style>
+</head>
+<body>
+  <div id="inside">
+    <button onclick="newAce()">New File</button>
+    <div id="editor">function foo(items) {
+        var x = "All this is syntax highlighted";
+        return x;
+    }</div>
+
+  </div>
+
+<script src="./src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+
+    let newAce = () => {
+      let aceTag = document.createElement('div');
+      let node = document.createTextNode(`
+        function helloWorld() {
+          let h = 'hello world';
+          return h;
+        }
+        `);
+      let element = document.getElementById('inside')
+      console.log(element);
+      element.appendChild(aceTag);
+      let a = ace.edit('editor');
+      a.setTheme("ace/theme/monokai");
+      a.getSession().setMode("ace/mode/javascript");
+
+    }
+</script>
+</body>
+</html>
